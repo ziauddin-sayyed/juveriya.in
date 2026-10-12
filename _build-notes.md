@@ -1,5 +1,51 @@
 # Juveriya Interior Decorator — Build Notes
 
+## Update Oct 2026 (round 4) — chip icons, rotating client logos, mailto form, office address
+
+1. **Hero chip icons (Flaticon)** — the 4 hero meta items now show real
+   Flaticon PNGs, self-hosted in `assets/images/icons/`:
+   `chip-calendar.png` (icon 747310 · since 1990), `chip-iso.png`
+   (icon 5759691 · ISO badge), `chip-location.png` (icon 8257474 ·
+   Santacruz), `chip-india.png` (icon 1455822 · India map = pan-India, as
+   instructed). Rendered inside white circular chips so the dark glyphs read
+   on the photo hero. Licence credit added to every footer:
+   "Icons by Flaticon" → https://www.flaticon.com/.
+   Source: `https://cdn-icons-png.flaticon.com/512/{floor(id/1000)}/{id}.png`.
+2. **Client logos → rotating strip** — the "On site for" chips list was
+   replaced by `#clients-carousel` (second OwlCarousel2 instance, same CDN
+   assets already loaded for the services carousel): loop + autoplay 2.4 s,
+   autoplayHoverPause, smartSpeed 700, margin 24, labelled ‹ › nav, no dots,
+   responsive 2/3/4/5/6 items, autoplay disabled under
+   `prefers-reduced-motion`; static grid fallback if the CDN is down.
+   The 12 logos were **copied** from `Companies_Logo_PNG/` (client-supplied
+   folder, kept untouched) into `assets/images/logos/` — original brand
+   colours/backgrounds preserved, contained in white tiles (no stretching).
+   MSC kept as .jpg; Marriott came from the client's zip (extracted, the two
+   variants were byte-identical so `jw-marriott.png` uses one).
+3. **Mail contact form** — kept the mailto approach (client's choice) and
+   hardened it: native `<form action="mailto:…"> method/post` fallback for
+   no-JS visitors; JS body now includes service, page URL and timestamp with
+   `encodeURIComponent`; success box gained a **"Copy enquiry text"** button
+   (clipboard API with graceful message) for visitors without a mail app,
+   alongside the existing email/tel/WhatsApp fallbacks.
+4. **Office address + map** — client-provided office address added
+   everywhere without removing the existing line: footers (all 5 pages) show
+   "**Office:** Galaxy no. 2, Santoshi Nagar, Western Express Hwy, Golibar,
+   Santacruz East, Mumbai – 400 055" above the G No 26 line; the contact
+   "Office address" block shows Galaxy No. 2 with "Also at: G No 26…".
+   **Map** — Google has no Places entry for "Galaxy no. 2" (a text query
+   falls back to a list of nearby *Galaxy*-named hotels with no marker,
+   which is what made the old embed look vague). Google's geocoder does snap
+   the full address string to street level (17 z) at **19.0824306,
+   72.8477001** — just east of NH-48 / W.E. Highway in Santoshi Nagar — so
+   the embed now pins exactly there (`?q=19.0824306,72.8477001&z=17`,
+   verified to render a red marker) and the "Open in Google Maps" link points
+   to the same coordinates. Verified candidates side-by-side first (address
+   string → hotel list/no marker; "Golibar" → locality card; coordinates →
+   clean pin). **Open with client:** if the pin isn't exactly on the
+   building, share a dropped-pin Google Maps link and only these two URLs
+   need swapping.
+
 ## Update Oct 2026 (round 3) — client feedback: graphite theme, services, contact
 
 ### 1. Global theme → graphite grey (client design system)

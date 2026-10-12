@@ -53,7 +53,7 @@
         <div class="form-card reveal">
           <h2 style="font-size:1.4rem; margin-bottom:0.3rem">Request a callback</h2>
           <p style="color:var(--muted); font-size:0.95rem; margin-top:0">Fields marked * are required. We usually respond within one working day.</p>
-          <form id="quote-form" novalidate style="margin-top:1.2rem">
+          <form id="quote-form" action="mailto:juveriyainterior@yahoo.com" method="post" enctype="text/plain" novalidate style="margin-top:1.2rem">
             <div class="field" data-invalid="false">
               <label for="name">Full name *</label>
               <input type="text" id="name" name="name" autocomplete="name" placeholder="e.g. Rahul Sharma" required>
@@ -95,7 +95,8 @@
             <p style="font-size:0.9rem; color:var(--muted); margin-top:0.8rem">Prefer email? Write to us directly at <a href="mailto:juveriyainterior@yahoo.com">juveriyainterior@yahoo.com</a>.</p>
             <div class="form-success" id="form-success" role="status" aria-live="polite">
               <h3>Thank you — your email app should open.</h3>
-              <p style="margin-bottom:0">If it doesn't open, email us directly at <a href="mailto:juveriyainterior@yahoo.com">juveriyainterior@yahoo.com</a>, call <a href="tel:+919923365642">9923 365 642</a> or <a href="https://wa.me/919923365642" target="_blank" rel="noopener">WhatsApp us</a>.</p>
+              <p>If it doesn't open, email us directly at <a href="mailto:juveriyainterior@yahoo.com">juveriyainterior@yahoo.com</a>, call <a href="tel:+919923365642">9923 365 642</a> or <a href="https://wa.me/919923365642" target="_blank" rel="noopener">WhatsApp us</a>.</p>
+              <p style="margin-bottom:0"><button type="button" class="btn btn--outline" id="copy-enquiry" style="font-size:0.85rem;padding:0.45rem 0.9rem">Copy enquiry text</button> <span id="copy-status" style="font-size:0.85rem" aria-live="polite"></span></p>
             </div>
           </form>
         </div>
@@ -105,7 +106,8 @@
           <ul class="info-list">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-              <div><strong>Office address</strong><span>G No 26, Santoshi Nagar, Near Western Express Highway Service Road, Santacruz (East), Mumbai – 400 055</span></div>
+              <div><strong>Office address</strong><span>Galaxy no. 2, Santoshi Nagar, Western Express Hwy, Golibar, Santacruz East, Mumbai, Maharashtra 400055</span>
+                <span style="display:block;margin-top:0.35rem;font-size:0.92rem">Also at: G No 26, Santoshi Nagar, Near Western Express Highway Service Road, Santacruz (E), Mumbai – 400 055</span></div>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.25a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9Z"/></svg>
@@ -124,8 +126,8 @@
               <div><strong>Working hours</strong><span>[TODO: confirm working hours]</span></div>
             </li>
           </ul>
-          <iframe class="map-embed" title="Map — Juveriya Interior Decorator, Santacruz East, Mumbai" src="https://www.google.com/maps?q=Santoshi+Nagar,+Western+Express+Highway+Service+Road,+Santacruz+East,+Mumbai+400055&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-          <p style="font-size:0.9rem"><a href="https://www.google.com/maps/search/?api=1&query=Santoshi+Nagar+Western+Express+Highway+Service+Road+Santacruz+East+Mumbai+400055" target="_blank" rel="noopener">Open in Google Maps →</a></p>
+          <iframe class="map-embed" title="Map — Juveriya Interior Decorator office, Galaxy No. 2, Santoshi Nagar, Santacruz East, Mumbai" src="https://www.google.com/maps?q=19.0824306,72.8477001&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <p style="font-size:0.9rem"><a href="https://www.google.com/maps/search/?api=1&query=19.0824306,72.8477001" target="_blank" rel="noopener">Open in Google Maps →</a></p>
         </div>
       </div>
     </section>
@@ -163,6 +165,7 @@
         <div>
           <h3>Contact</h3>
           <ul>
+            <li><strong>Office:</strong> Galaxy no. 2, Santoshi Nagar, Western Express Hwy, Golibar, Santacruz East, Mumbai – 400 055</li>
             <li>G No 26, Santoshi Nagar, W.E. Highway Service Rd, Santacruz (E), Mumbai – 400 055</li>
             <li><a href="tel:+919923365642">9923 365 642</a></li>
             <li><a href="https://wa.me/919923365642" target="_blank" rel="noopener">WhatsApp Enquiry</a></li>
@@ -173,7 +176,7 @@
       </div>
       <div class="footer-bottom">
         <p>© <span data-year>2026</span> Juveriya Interior Decorator Co. All rights reserved.</p>
-        <p>GSTIN 27AJKPK1361R1ZN · ISO 9001:2015 certified · Est. 1990, Mumbai</p>
+        <p>GSTIN 27AJKPK1361R1ZN · ISO 9001:2015 certified · Est. 1990, Mumbai · Icons by <a href="https://www.flaticon.com/" target="_blank" rel="noopener">Flaticon</a></p>
       </div>
     </div>
   </footer>

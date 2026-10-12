@@ -89,6 +89,36 @@
     $el.find(".owl-next").attr("aria-label", "Next services");
   })();
 
+  /* ---------- Client logo carousel (rotating strip, OwlCarousel2) ---------- */
+  (function initClientsCarousel() {
+    var el = document.getElementById("clients-carousel");
+    if (!el) return;
+    var hasOwl = window.jQuery && window.jQuery.fn && window.jQuery.fn.owlCarousel;
+    if (!hasOwl) return; // static list fallback
+    var $el = window.jQuery(el);
+    var noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $el.owlCarousel({
+      loop: true,
+      margin: 24,
+      nav: true,
+      dots: false,
+      smartSpeed: 700,
+      autoplay: !noMotion,
+      autoplayTimeout: 2400,
+      autoplayHoverPause: true,
+      navText: ['<span aria-hidden="true">‹</span>', '<span aria-hidden="true">›</span>'],
+      responsive: {
+        0: { items: 2 },
+        480: { items: 3 },
+        768: { items: 4 },
+        1100: { items: 5 },
+        1400: { items: 6 }
+      }
+    });
+    $el.find(".owl-prev").attr("aria-label", "Previous client logos");
+    $el.find(".owl-next").attr("aria-label", "Next client logos");
+  })();
+
   /* ---------- Portfolio filter ---------- */
   var filterBtns = document.querySelectorAll(".filter-btn");
   var items = document.querySelectorAll(".portfolio-item");
@@ -225,16 +255,20 @@
         if (firstBad) firstBad.focus();
         return;
       }
-      /* No backend: open the visitor's email app with the enquiry pre-filled. */
+      /* No backend (static site): hand the enquiry to the visitor's mail app,
+         pre-filled and URL-encoded. Fallbacks: copy button + direct links. */
       var addr = "juveriyainterior@yahoo.com";
       var typeEl = document.getElementById("type");
       var typeText = typeEl.options[typeEl.selectedIndex].text;
-      var subject = "Website enquiry from " + name;
+      var subject = "Website enquiry — " + typeText + " — " + name;
       var body = "Name: " + name + "\n"
         + "Phone: " + phone + "\n"
         + "Email: " + (email === "" ? "-" : email) + "\n"
-        + "Service: " + typeText + "\n\n"
+        + "Service: " + typeText + "\n"
+        + "Sent from: " + window.location.href + "\n"
+        + "Date: " + new Date().toLocaleString("en-IN") + "\n\n"
         + "Message:\n" + message;
+      lastEnquiry = "Subject: " + subject + "\n\n" + body;
       window.location.href = "mailto:" + addr
         + "?subject=" + encodeURIComponent(subject)
         + "&body=" + encodeURIComponent(body);
@@ -243,5 +277,24 @@
       success.focus();
       form.reset();
     });
+
+    /* Copy fallback for visitors without a configured mail app */
+    var lastEnquiry = "";
+    var copyBtn = document.getElementById("copy-enquiry");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var status = document.getElementById("copy-status");
+        function say(msg) { if (status) status.textContent = msg; }
+        if (!lastEnquiry) { say("Nothing to copy yet."); return; }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(lastEnquiry).then(
+            function () { say("Copied ✓"); },
+            function () { say("Copy failed — select the text manually."); }
+          );
+        } else {
+          say("Copying isn't supported here — select the text manually.");
+        }
+      });
+    }
   }
 })();
