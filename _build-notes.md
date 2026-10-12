@@ -1,5 +1,73 @@
 # Juveriya Interior Decorator — Build Notes
 
+## Update Oct 2026 (round 3) — client feedback: graphite theme, services, contact
+
+### 1. Global theme → graphite grey (client design system)
+- All navy/orange replaced site-wide by the mandated palette, defined as CSS
+  custom properties at the top of `css/styles.css`:
+  `--black #000000`, `--graphite-900 #303030`, `--graphite-600 #5C5C5C`,
+  `--graphite-200 #D1D1D1`, `--white #FFFFFF`, plus semantic aliases
+  (`--ink`, `--muted`, `--line`, `--bg`, `--bg-soft`, `--bg-dark`,
+  `--accent`, `--on-dark`).
+- Applied to every page/component: header + mobile drawer, hero, page
+  heroes, cards, tags, buttons, stats, steps, chips, CTA banners, Owl
+  carousel nav/dots, portfolio filters, lightbox, forms and footer.
+  Focus outlines auto-switch to white on dark surfaces (contrast-safe).
+  `favicon.svg` recoloured to the same palette (mark structure unchanged).
+- Retained colours are functional states only: `#b42318` (field errors) and
+  `#2e9e5b`/`#146c3c`/`#e9f7ef` (form success). Verified by grep: no other
+  hex/rgba colours remain in CSS; HTML pages contain no raw colour values.
+
+### 2. Company information (per client, round 3)
+- **Established 1990** applied site-wide (client instruction). ⚠ Every copy
+  of the company profile PDF in /DATA states "FORMATION OF COMPANY: 1998" —
+  the 1990 date is a client directive that overrides the documents; logged
+  as an open question.
+- **ISO 9001:2015 certified** — verified in /DATA: 19 of 20 Juveriya
+  project-report cover pages (`2018-2019/Fedex/Cover Page/*.docx`) carry the
+  line "Juveriya Interior Decorator, Santa Cruz East, Mumbai … An ISO
+  9001:2015 Certified Company". No standalone certificate scan exists, so
+  the wording used is exactly "ISO 9001:2015 certified" (no other ISO
+  standards claimed).
+- **Pan-India turnkey project execution** stated in hero, services intro,
+  about credentials and CTA banner; **key locations: Bhiwandi, Delhi NCR,
+  across India** (client-provided).
+
+### 3. Services — added / removed (round 3)
+- REMOVED per client: restoration & structural repair, residential
+  furniture/woodwork, modular kitchens & vanities, concrete-block content.
+  Taken out of: home carousel cards, `services.html` blocks (`#restoration`,
+  `#residential`, `#kitchens`), footer service links, portfolio filter +
+  items, contact form options, meta titles/descriptions, alt text, team
+  bios and intro copy. `concrete-blockwork-terminal.jpg` removed from the
+  gallery and deleted from `assets/images/` (git-tracked, recoverable).
+- ADDED: `#mezzanine` (mezzanine floors), `#shutters-gates` (rolling
+  shutters, heavy-duty gates & trolleys, loading-dock fabrication),
+  `#flooring` (heavy-duty vinyl & epoxy). Steel fabrication & fencing kept
+  and renamed (`#fabrication`); plumbing & cladding kept (`#finishing`);
+  electrical renamed "Electrical Materials, Works, CCTV & Networking".
+  `services.html` still has 10 numbered blocks and the home carousel 10
+  cards, so "Ten services, one contractor" remains accurate.
+- Renamed asset: `building-facade-restoration.jpg` →
+  `facade-painting-commercial.jpg` (item now filed under Waterproofing &
+  Painting; wording no longer implies the removed restoration line).
+
+### 4. Contact (round 3)
+- Primary number site-wide: **9923365642** → `tel:+919923365642`, shown as
+  "9923 365 642" (headings, CTAs, footer, meta descriptions).
+- **9967438155 removed everywhere.** 9820 249 758 retained as a secondary
+  line on the contact page only (client removed only the 8155 number).
+- WhatsApp: `https://wa.me/919923365642` added in the footer of all 5
+  pages, the home CTA banner, the contact info list and the form success
+  message (`target="_blank" rel="noopener"`).
+
+### 5. Logos (round 3)
+- Inspected `assets/images/`: the only logo asset is `favicon.svg` (the
+  "J" tile). /DATA contains no reusable company/client logo files — only a
+  UIDAI logo embedded in a BOQ spreadsheet and MSC "brand wall"
+  fabrication PDFs (client-side drawings), so none were added (no invented
+  relationships). Favicon recoloured to graphite; text wordmark unchanged.
+
 ## Positioning (from documents, not assumed)
 - **Size/scale:** Small, proprietor-led execution firm. Founded 1998 by
   Mukhtar Gulsher Khan; day-to-day run by Sufiyan Khan (sales & business
@@ -18,6 +86,7 @@
   confident/clean/structured: strong headings, service blocks, credentials,
   project cards with category tags, practical CTA ("Get a Free Quote").
   Palette: deep navy (trust) + industrial orange accent, light neutrals.
+  *(superseded round 3 → graphite-grey palette, see top of this file)*
 
 ## Company facts (source: 2020-2021/Juveriya profile for prodata.pdf, BOQ footers)
 - Full name: Juveriya Interior Decorator Co. ("Juveriya Interior Decorator")
@@ -27,7 +96,10 @@
   sufiyan.khan@yjuveriya.in (profile p48, spelling as printed)
 - Phone: 9820 249 758 (consistent across all BOQ footers 2007–2024);
   profile also lists 9967438155 / 9923365642
-- Est. 1998. Proprietor: Mukhtar Gulsher Khan (45 yrs exp).
+  *(round 3: site primary is now 9923365642; 9967438155 removed)*
+- Est. 1998 (as printed in the profile). *(round 3: client instructs 1990 —
+  1990 used on the site, discrepancy flagged)*
+- Proprietor: Mukhtar Gulsher Khan (45 yrs exp).
   Project head: Sayed Imran (civil engg, 10 yrs). Sales/BD: Sufiyan Khan.
 - GSTIN 27AJKPK1361R1ZN, PAN AJKPK1361R. Bankers: New India Co-op Bank / ICICI.
 - About-us, mission/vision, core values (quality / precision / customer
@@ -131,7 +203,8 @@
   own profile PDF (pp. 23–47) + 12 from DATA folders = 22 portfolio items.
 
 ## Numbers shown (all documented, no money figures)
-- Operating since 1998 • Founder 45 yrs experience • Project head (civil
+- Operating since 1990 (client directive; DATA says 1998) • Founder 45 yrs
+  experience • Project head (civil
   engineer) 10 yrs • 3,850 sq ft turnkey office • 7,000 sq ft gate-shed build
   • 10+ major logistics/industrial client names on record.
 - No money, prices, rates or package costs are shown anywhere on the site
@@ -142,7 +215,9 @@
 
 ## Assumptions
 - No logo file exists in DATA → text wordmark + inline-SVG "J" favicon.
-- No brand colours/fonts in DATA → navy #0E2A47 + orange #E8821E,
+- No brand colours/fonts in DATA → originally navy #0E2A47 + orange #E8821E
+  *(round 3: replaced by client-mandated graphite palette #000000 /
+  #303030 / #5C5C5C / #D1D1D1 / #FFFFFF)*,
   Archivo headings + Inter body.
 - Working hours not stated → placeholder on contact page.
 - Website URL/social handles not stated → placeholders in footer/contact.
