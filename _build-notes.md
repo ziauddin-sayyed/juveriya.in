@@ -1,5 +1,30 @@
 # Juveriya Interior Decorator — Build Notes
 
+## Update Oct 2026 (round 5) — expanded partner logo wall
+
+1. **Heading** — "Logistics, industrial & institutional clients across India"
+   → **"Our partners / people we have worked with"** (client wording).
+2. **All supplied logos in the carousel** — `#clients-carousel` grew from 12 to
+   **34 tiles**; the client dropped ~22 new files directly into
+   `assets/images/logos/` and replaced some earlier ones with bigger
+   versions (APM 900×500, Rhenus wordmark, Mahindra wordmark) — all wired in
+   as-is. New brands: APL Logistics, Allcargo, Birdview Global, Crane
+   Worldwide, DP World, Emiza, FEI Cargo, Flyjac, Flyjack, Furlenco, K11,
+   KSH, Mantra, MOL, New Breed, PSIPL, SAR Transport, Samsara Shipping,
+   TechNova, plus second marks for Mahindra Logistics, MSC and TVS
+   (variants shown as separate tiles, same-brand tiles placed next to each
+   other). Alt text names every brand; tiles unchanged (white card,
+   contained, no stretching; lazy-loaded).
+3. **Cleaned derivatives (originals kept untouched)** —
+   `APl_logistics.png` and `TVS.jpeg` had a checkerboard "transparency"
+   pattern baked into their pixels (export artifact); saved cleaned copies
+   `apl-logistics.png` and `tvs.png` (greys → white, logo colours intact)
+   and the carousel uses those. `samsara.jpg` was PNG data with partial
+   alpha in a .jpg container → flattened onto white as `samsara.png`.
+   **Open with client:** Flyjac vs Flyjack, MSC ×2, TVS ×2, Mahindra ×2 are
+   two logos of (apparently) the same brand each — kept per instruction;
+   say the word to drop any variant.
+
 ## Update Oct 2026 (round 4) — chip icons, rotating client logos, mailto form, office address
 
 1. **Hero chip icons (Flaticon)** — the 4 hero meta items now show real
