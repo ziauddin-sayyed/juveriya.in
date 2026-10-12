@@ -22,8 +22,8 @@
   --on-dark: var(--graphite-200);  /* secondary text on dark surfaces */
 
   /* Type */
-  --font-head: "Archivo", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-head: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
   --fs-hero: clamp(2rem, 5.2vw + 1rem, 3.6rem);
   --fs-h2: clamp(1.55rem, 2.6vw + 1rem, 2.35rem);
   --fs-h3: 1.18rem;

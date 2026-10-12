@@ -1,5 +1,27 @@
 # Juveriya Interior Decorator — Build Notes
 
+## Update Oct 2026 (round 6) — Manrope typeface, hero + stats copy
+
+1. **Typography** — Archivo + Inter replaced by **Manrope** everywhere.
+   All 5 pages now load a single variable font file
+   (`css2?family=Manrope:wght@400..800&display=swap`, weights 400–800 cover
+   every weight the site uses) and `styles.css` sets both `--font-head` and
+   `--font-body` to `"Manrope", "Segoe UI", system-ui, -apple-system,
+   sans-serif`. System-font fallback chain unchanged, so nothing breaks if
+   Google Fonts is blocked. The SVG favicon keeps `Arial` — favicons cannot
+   load web fonts.
+2. **Hero headline** (client-edited copy, tidied) — "Commercial &amp;
+   Industrial Solutions" then a hard `<br>` so "— delivered across India."
+   sits on its own line; removed a stray `. ` after "Solutions" and a
+   duplicated full stop in the standfirst.
+3. **Track-record stats** (client-directed figures) — the two area figures
+   were replaced: "7,000 sq ft / Gate-shed build, APM Terminals Panvel" →
+   **"3,000+ / Challenges tackled"**, and "3,850 sq ft / Turnkey office,
+   Mahindra Logistics Bhiwandi" → **"25+ MNCs / Problems solved"**. Real
+   project descriptions that quote 7,000 sq ft (portfolio card, services
+   list, featured project) were left intact — only the achievement tiles
+   changed.
+
 ## Update Oct 2026 (round 5) — expanded partner logo wall
 
 1. **Heading** — "Logistics, industrial & institutional clients across India"
@@ -24,6 +46,12 @@
    **Open with client:** Flyjac vs Flyjack, MSC ×2, TVS ×2, Mahindra ×2 are
    two logos of (apparently) the same brand each — kept per instruction;
    say the word to drop any variant.
+4. **Wrong-logo tiles removed** (client decision) — the duplicate MSC
+   wordmark (`msc.jpg`) and the Mahindra chevron mark
+   (`mahindra-logistics2.png`) were dropped; the client deleted both files,
+   so the dead commented-out `<li>` lines were removed from the markup too
+   and the surviving MSC tile's alt was simplified from "MSC (brandmark)"
+   to "MSC". Carousel: 34 → **32 tiles**.
 
 ## Update Oct 2026 (round 4) — chip icons, rotating client logos, mailto form, office address
 
@@ -289,7 +317,7 @@
 - No brand colours/fonts in DATA → originally navy #0E2A47 + orange #E8821E
   *(round 3: replaced by client-mandated graphite palette #000000 /
   #303030 / #5C5C5C / #D1D1D1 / #FFFFFF)*,
-  Archivo headings + Inter body.
+  Manrope headings + body *(round 6; replaced Archivo + Inter)*.
 - Working hours not stated → placeholder on contact page.
 - Website URL/social handles not stated → placeholders in footer/contact.
 - "How we work" 5-step process synthesised from standard BOQ notes found in
