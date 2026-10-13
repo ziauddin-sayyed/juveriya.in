@@ -52,6 +52,12 @@
    so the dead commented-out `<li>` lines were removed from the markup too
    and the surviving MSC tile's alt was simplified from "MSC (brandmark)"
    to "MSC". Carousel: 34 → **32 tiles**.
+5. **Two more tiles removed** (client decision) — the orange-horse TVS mark
+   (`tvs.png`; the blue-circle TVS Supply Chain Solutions tile stays) and
+   the green Flyjac logo with the "Integrating Value Chains" tagline
+   (`Flyjac.png`; the red/green Flyjack tile stays). Carousel: 32 →
+   **30 tiles**. Both files left in `assets/images/logos/` (unreferenced);
+   delete them if they shouldn't ship with the site.
 
 ## Update Oct 2026 (round 4) — chip icons, rotating client logos, mailto form, office address
 
