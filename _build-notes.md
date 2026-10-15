@@ -1,5 +1,96 @@
 # Juveriya Interiors — Build Notes
 
+## Update Oct 2026 (round 14, UNPUSHED) — Scope page (Commercial + Residential)
+
+1. **New page `scope.html`** — "Scope of Work" with two sections. Built on the
+   services skeleton (same head/header/footer/page-hero/visit-CTA patterns).
+   Title/metas/OG are unique; sitemap updated. Header + footer nav on all
+   pages now read Home About Services Portfolio **Scope** Contact (6 items;
+   `aria-current` moves per page; mobile drawer inherits automatically).
+2. **Commercial** (`#commercial`) — 18 photos from
+   `Creative/DATA-images/Latest_commercial_residential_images/
+   Commercial_for_website` (9 CEVA Chennai + 9 Dachser Pune, selected for
+   variety across bursts, compressed to ~1400px) in captioned `.scope-fig`
+   cards (new CSS) grouped under site subheads, with a typical-scope summary
+   built only from existing service names. Captions use client/site names
+   from the source folders — no invented scope details.
+3. **Residential** (`#residential`, soft section) — placeholder only:
+   "portfolio being compiled" + visible `[TODO: add residential project
+   photos]` + contact link. No residential content invented (standing rule).
+   Verified: 18/18 decode, nav fits 6 items at 1280, no overflow at 360,
+   0 errors, full 19/19 regression suite green. Screenshots inspected.
+
+## Update Oct 2026 (round 13, UNPUSHED) — people, names, privacy, MSC, before/after fixes
+
+1. **Sayed Imran removed entirely** — about meta, management paragraph
+   (now "owned and managed by Mukhtar Gulsher Khan and Sufiyan Khan"), team
+   card deleted (grid now 2 cards), Sufiyan's card bumped to "Co-owner ·
+   Sales & Business Development" per the client's ownership framing.
+   Mukhtar stays Proprietor. Zero mentions remain in site code; historical
+   note lines redacted with markers.
+2. **"Fabrication", not "Steel Fabrication"** — service renamed to
+   "Fabrication & Fencing" in block h2, carousel card (was the inconsistent
+   "Fabrication & Steel"), all footer links, contact select option, metas
+   and body copy ("steel fabrication" → "fabrication" everywhere as the
+   term). Kept deliberately: "structural steelwork" / "steel structures"
+   (accurate material descriptions, not the service name). Anchor
+   `#fabrication` unchanged.
+3. **Flooring card** — "Vinyl & Epoxy Flooring" → "Flooring" (carousel h3,
+   services h2 → "Heavy-Duty Flooring", all footer links, contact select);
+   description now "Heavy-duty floor finishes — vinyl and epoxy." Material
+   mentions elsewhere kept as descriptive copy.
+4. **GSTIN/PAN removed** — footer-bottom line on all 5 pages now reads
+   "ISO 9001:2015 certified · Est. 1990, Mumbai"; about credentials facts
+   list lost its GSTIN/PAN item ("GST-registered firm" status claim kept —
+   no numbers). Numbers scrubbed from PROJECT_CONTEXT + redacted in these
+   notes. They were ID numbers, never needed on a marketing site.
+5. **Hero frame 1 removed** — `hero-warehouse-office-setup.jpg` deleted;
+   `hero-partition-office-01.jpg` promoted to the eager first frame.
+6. **MSC watermarks removed by cropping** — the "Shot on OnePlus" band sits
+   in the bottom ~13%, so all 5 used WA-Nov-2025 files were re-cropped at
+   85% height (1600×1020) and visually verified clean, incl. re-copying the
+   live `ba-msc-after.jpg` which had shipped WITH the watermark. IMG-series
+   files never had watermarks.
+7. **MSC integrated + before/after fixed and expanded** — full-folder review
+   (27 files) showed the old MSC pair mixed two different structures, so the
+   MSC card is now a verified 3-stage trio: concrete shell Mar 2023 →
+   deck/planter works Apr 2023 (`IMG20230417150952`) → finished lit deck Nov
+   2025. Added: 2 pool-deck hero frames (16 total) + 2 finished-deck frames
+   to the BA strip (6 total). Viewer count 11 → 14. Karjat + EXPO trio
+   re-verified and kept. Deleted `hero-warehouse-office-setup.jpg`.
+   Verified full suite + screenshots (below). `/DATA` untouched.
+
+## Update Oct 2026 (round 12, UNPUSHED) — search-result logo/favicon groundwork
+
+1. **Diagnosis** — Google result showed the OLD title ("…Decorator…") + a
+   generic globe icon: proof Google hasn't recrawled since the rename push,
+   and it never fetched a favicon. Nothing updates until it recrawls.
+2. **Added for recrawl/discovery** — `Organization`/`GeneralContractor`
+   JSON-LD on all 5 pages (name, logo `https://juveriya.in/svg/logo-full.svg`
+   — copied the light full lockup to root `svg/` for this — image, phone,
+   email, Galaxy address, est. 1990, India, GBP sameAs); new `sitemap.xml`
+   (5 URLs) + `robots.txt` (allow-all + sitemap ref). Favicon set already
+   meets Google's size rules (48px ICO + PNGs + SVG + manifest, all
+   crawlable). JSON-LD validates; pages serve 200 with 0 page errors (sole
+   headless request-fail is the Maps embed blocking headless Chrome — renders
+   fine in real browsers, verified earlier by screenshot).
+3. **Needs the site owner in Search Console** — URL Inspection → Request
+   Indexing for juveriya.in (+ About/Contact); favicon/title refresh follows
+   within days. Cannot be forced from here.
+
+## History rewrite Oct 2026 — commit attribution (one-off, user-approved)
+
+1. Past commits were authored `opencode <opencode@local>`, which GitHub
+   cannot link to any account — so none of the pushes counted on the
+   contribution graph. Rewrote all 8 opencode-authored commits to
+   `NARS77 <56463325+NARS77@users.noreply.github.com>` (repo-local git
+   identity now set to the same — all future commits attribute correctly).
+   The repo owner's `Create CNAME` commit was deliberately left untouched.
+   Verified byte-identical trees before force-pushing (`--force-with-lease`);
+   GitHub API confirms 8 commit contributions on `ziauddin-sayyed/juveriya.in`.
+   NOTE: every commit hash below changed in the rewrite (e.g. HEAD
+   `7bb92be` → `8c3a0f6`); treat old hashes as superseded.
+
 ## Update Oct 2026 (round 11, UNPUSHED) — renamed to Juveriya Interiors
 
 1. **"Interior Decorator" dropped everywhere** — 31 occurrences across all 5
@@ -371,7 +462,8 @@
 ## Positioning (from documents, not assumed)
 - **Size/scale:** Small, proprietor-led execution firm. Founded 1998 by
   Mukhtar Gulsher Khan; day-to-day run by Sufiyan Khan (sales & business
-  development) and Sayed Imran (project head, civil engineer). Disclosed
+  development) [second name redacted Oct 2026 — person removed from the site
+  per client instruction]. Disclosed
   turnover in the low-crore range (figures intentionally not published on
   the site — no money/prices policy, Oct 2026). Site teams + own carpenters.
 - **Customers:** Primarily B2B — logistics, warehousing & industrial clients
@@ -400,8 +492,8 @@
 - Est. 1998 (as printed in the profile). *(round 3: client instructs 1990 —
   1990 used on the site, discrepancy flagged)*
 - Proprietor: Mukhtar Gulsher Khan (45 yrs exp).
-  Project head: Sayed Imran (civil engg, 10 yrs). Sales/BD: Sufiyan Khan.
-- GSTIN 27AJKPK1361R1ZN, PAN AJKPK1361R. Bankers: New India Co-op Bank / ICICI.
+  Sales/BD: Sufiyan Khan. [Former project-head line redacted Oct 2026.]
+- GSTIN/PAN numbers redacted Oct 2026 (private documents — never on the site). Bankers: New India Co-op Bank / ICICI.
 - About-us, mission/vision, core values (quality / precision / customer
   satisfaction) paraphrased from profile pp. 3–5.
 

@@ -348,6 +348,12 @@ li { margin-block: 0.3em; }
   .ba-strip { grid-template-columns: repeat(4, 1fr); }
 }
 
+/* ============ Scope of work ============ */
+.scope-fig { margin: 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: clip; box-shadow: var(--shadow-sm); }
+.scope-fig img { width: 100%; height: 230px; object-fit: cover; display: block; }
+.scope-fig figcaption { padding: 0.8rem 1rem; font-size: 0.92rem; font-weight: 700; color: var(--graphite-900); }
+.scope-fig figcaption span { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+
 /* ============ Portfolio ============ */
 .filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.6rem 0 1.8rem; }
 .filter-btn {
