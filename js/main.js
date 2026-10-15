@@ -4,12 +4,58 @@
 
   /* ---------- Sticky header ---------- */
   var header = document.querySelector(".site-header");
+  var mark = header ? header.querySelector(".brand__logo") : null;
+  var word = header ? header.querySelector(".brand__wordmark") : null;
+  var MARK_DARK = "svg/logo-icon-dark.svg";       /* transparent header over dark hero */
+  var MARK = "svg/logo-icon.svg";                 /* solid white header after scroll */
+  var WORD_DARK = "svg/logo-wordmark-dark.svg";
+  var WORD = "svg/logo-wordmark.svg";
+  function setSrc(el, want) {
+    if (el && el.getAttribute("src") !== want) el.setAttribute("src", want);
+  }
   function onScroll() {
     if (!header) return;
-    header.classList.toggle("is-solid", window.scrollY > 24);
+    var solid = window.scrollY > 24;
+    header.classList.toggle("is-solid", solid);
+    setSrc(mark, solid ? MARK : MARK_DARK);
+    setSrc(word, solid ? WORD : WORD_DARK);
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
+
+  /* ---------- Hero background rotator (15 site photos, crossfade) ---------- */
+  (function initHeroRotator() {
+    var bg = document.querySelector(".hero__bg");
+    if (!bg) return;
+    var imgs = Array.prototype.slice.call(bg.querySelectorAll("img"));
+    if (imgs.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var current = 0, next = 1;
+    function load(i) {
+      var im = imgs[i];
+      if (im && im.getAttribute("data-src") && !im.getAttribute("src")) {
+        im.setAttribute("src", im.getAttribute("data-src"));
+      }
+    }
+    load(1); // have frame 2 ready before the first rotation
+    setInterval(function () {
+      if (document.hidden) return;
+      load(next);
+      var show = imgs[next];
+      function activate() {
+        imgs[current].classList.remove("is-active");
+        show.classList.add("is-active");
+        current = next;
+        next = (next + 1) % imgs.length;
+        load(next); // preload the frame after next while this one shows
+      }
+      if (show.complete && show.naturalWidth > 0) activate();
+      else {
+        show.onload = activate;
+        show.onerror = function () { next = (next + 1) % imgs.length; };
+      }
+    }, 2600);
+  })();
 
   /* ---------- Mobile nav ---------- */
   var toggle = document.querySelector(".nav-toggle");
@@ -216,6 +262,66 @@
     }, { passive: true });
   }
 
+  /* ---------- Before / After photo viewer ---------- */
+  (function initBaViewer() {
+    var shots = Array.prototype.slice.call(document.querySelectorAll(".ba-zoom"));
+    var box = document.getElementById("ba-lightbox");
+    if (!box || !shots.length) return;
+    var img = document.getElementById("ba-lb-img");
+    var title = document.getElementById("ba-lb-title");
+    var desc = document.getElementById("ba-lb-desc");
+    var count = document.getElementById("ba-lb-count");
+    var idx = 0, last = null;
+    function show(i) {
+      idx = (i + shots.length) % shots.length;
+      var shot = shots[idx];
+      var im = shot.querySelector("img");
+      img.src = im.src;
+      img.alt = im.alt;
+      title.textContent = shot.getAttribute("data-ba-t") || "";
+      desc.textContent = shot.getAttribute("data-ba-c") || "";
+      count.textContent = "Photo " + (idx + 1) + " of " + shots.length;
+    }
+    function open(shot) {
+      last = document.activeElement;
+      box.classList.add("is-open");
+      box.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      show(shots.indexOf(shot));
+      box.querySelector(".lightbox__close").focus();
+    }
+    function close() {
+      if (!box.classList.contains("is-open")) return;
+      box.classList.remove("is-open");
+      box.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (last && last.focus) last.focus();
+    }
+    shots.forEach(function (shot) {
+      shot.addEventListener("click", function () { open(shot); });
+    });
+    box.querySelector(".lightbox__close").addEventListener("click", close);
+    box.querySelector(".lightbox__prev").addEventListener("click", function () { show(idx - 1); });
+    box.querySelector(".lightbox__next").addEventListener("click", function () { show(idx + 1); });
+    box.querySelector(".lightbox__backdrop").addEventListener("click", close);
+    document.addEventListener("keydown", function (e) {
+      if (!box.classList.contains("is-open")) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") show(idx + 1);
+      if (e.key === "ArrowLeft") show(idx - 1);
+    });
+    var startX = null;
+    box.addEventListener("touchstart", function (e) {
+      startX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    box.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 45) show(idx + (dx < 0 ? 1 : -1));
+      startX = null;
+    }, { passive: true });
+  })();
+
   /* ---------- Contact form validation ---------- */
   var form = document.getElementById("quote-form");
   if (form) {
@@ -257,7 +363,7 @@
       }
       /* No backend (static site): hand the enquiry to the visitor's mail app,
          pre-filled and URL-encoded. Fallbacks: copy button + direct links. */
-      var addr = "juveriyainterior@yahoo.com";
+      var addr = "info@juveriya.com";
       var typeEl = document.getElementById("type");
       var typeText = typeEl.options[typeEl.selectedIndex].text;
       var subject = "Website enquiry — " + typeText + " — " + name;

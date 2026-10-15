@@ -1,0 +1,88 @@
+<!--
+  JUVERIYA INTERIORS · HEAD + HEADER SNIPPET
+  ------------------------------------------------------------------
+  PART 1  goes inside <head> ... </head>   (favicons, share image, font)
+  PART 2  goes where your site header is   (pick ONE of options A / B / C)
+
+  Before you paste:
+   • Copy the svg/, png/, favicons/ and social/ folders to your site's
+     root, so the files live at /svg/..., /favicons/..., /social/...
+     (If you keep them somewhere else, change the paths below.)
+   • Replace  https://www.YOUR-DOMAIN.com  and the description text.
+     Share-preview (Open Graph) tags need the full web address.
+-->
+
+
+<!-- ================= PART 1 · paste inside <head> ================= -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juveriya Interiors</title>
+<meta name="description" content="YOUR SHORT DESCRIPTION (about 150 characters)">
+
+<!-- Favicons -->
+<link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicons/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicons/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="/favicons/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png">
+<link rel="manifest" href="/favicons/site.webmanifest">
+<meta name="theme-color" content="#33383C">
+
+<!-- Share preview: WhatsApp, Facebook, LinkedIn, X -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Juveriya Interiors">
+<meta property="og:title" content="Juveriya Interiors">
+<meta property="og:description" content="YOUR SHORT DESCRIPTION">
+<meta property="og:url" content="https://www.YOUR-DOMAIN.com/">
+<meta property="og:image" content="https://www.YOUR-DOMAIN.com/social/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Juveriya Interiors logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Juveriya Interiors">
+<meta name="twitter:description" content="YOUR SHORT DESCRIPTION">
+<meta name="twitter:image" content="https://www.YOUR-DOMAIN.com/social/og-image.png">
+
+<!-- Manrope: only needed for OPTION C below (the logo files themselves need no font) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700&display=swap" rel="stylesheet">
+
+
+<!-- ================= PART 2 · header (choose ONE option) ================= -->
+
+<!-- OPTION A · Full logo (stacked). Best for a centred header, hero or footer. -->
+<a href="/" aria-label="Juveriya Interiors – home">
+  <img src="/svg/logo-full.svg" alt="Juveriya Interiors" width="108" height="150">
+</a>
+
+
+<!-- OPTION B · Full logo that switches to the dark logo in dark mode -->
+<a href="/" aria-label="Juveriya Interiors – home">
+  <picture>
+    <source srcset="/svg/logo-full-dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="/svg/logo-full.svg" alt="Juveriya Interiors" width="108" height="150">
+  </picture>
+</a>
+<!-- Same idea for the one-line wordmark: swap in logo-wordmark.svg / logo-wordmark-dark.svg
+     and use width="260" height="29".
+     Site with its own dark-mode switch (a "dark" class on <html>)? See README → "Dark mode". -->
+
+
+<!-- OPTION C · Compact header: icon + the name as live text (best for navigation bars) -->
+<a class="jv-brand" href="/" aria-label="Juveriya Interiors – home">
+  <picture>
+    <source srcset="/svg/logo-icon-dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="/svg/logo-icon.svg" alt="" width="44" height="44">
+  </picture>
+  <span class="jv-brand__name"><span class="jv-brand__gold">JUVERIYA</span> <span class="jv-brand__grey">INTERIORS</span></span>
+</a>
+<style>
+  .jv-brand{display:inline-flex;align-items:center;gap:.65rem;text-decoration:none}
+  .jv-brand__name{font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;
+    font-size:1.05rem;line-height:1;letter-spacing:.09em;white-space:nowrap}
+  .jv-brand__gold{color:#F0B429}
+  .jv-brand__grey{color:#33383C}
+  @media (prefers-color-scheme:dark){.jv-brand__grey{color:#C9CFD5}}
+</style>

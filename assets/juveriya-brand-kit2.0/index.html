@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juveriya Interiors · Brand kit test page</title>
+
+<!-- Favicon test: look at this browser tab -->
+<link rel="icon" href="favicons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicons/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicons/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="favicons/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
+<link rel="manifest" href="favicons/site.webmanifest">
+<meta name="theme-color" content="#33383C">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{--bg:#F5F5F5;--panel:#fff;--ink:#33383C;--muted:#6B7177;--line:#DADDE0}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171A;--panel:#1B1F22;--ink:#E6E9EC;--muted:#98A0A8;--line:#2C3237}}
+  :root[data-theme="dark"]{--bg:#14171A;--panel:#1B1F22;--ink:#E6E9EC;--muted:#98A0A8;--line:#2C3237}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Manrope",system-ui,-apple-system,"Segoe UI",sans-serif}
+  .bar{position:sticky;top:0;z-index:5;display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;
+       padding:.7rem 1.25rem;background:var(--panel);border-bottom:1px solid var(--line)}
+  .toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .toggle button{font:inherit;font-size:.85rem;padding:.35rem .9rem;border:0;background:transparent;color:var(--ink);cursor:pointer}
+  .toggle button.on{background:#F0B429;color:#33383C;font-weight:700}
+  main{max-width:1000px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+  h1{font-size:1.5rem;margin:.2rem 0 .3rem} h2{font-size:1.15rem;margin:2.4rem 0 .4rem} h3{font-size:.95rem;margin:0 0 .6rem}
+  p,li{color:var(--muted)} .note{font-size:.88rem}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.25rem;margin:.9rem 0}
+  .mock{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 1rem;border:1px dashed var(--line);border-radius:10px}
+  .mock nav{display:flex;gap:1.1rem;font-size:.9rem;color:var(--muted)}
+  .center{justify-content:center}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem} @media (max-width:760px){.grid{grid-template-columns:1fr}}
+  .panel{border-radius:14px;padding:1.4rem;display:flex;flex-direction:column;gap:1.5rem;align-items:center;border:1px solid var(--line)}
+  .panel.light{background:#F5F5F5}.panel.dark{background:#14171A}
+  .panel small{align-self:flex-start;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;opacity:.65}
+  .panel.light small{color:#33383C}.panel.dark small{color:#C9CFD5}
+  .icons{display:flex;flex-wrap:wrap;gap:1.4rem;align-items:flex-end}
+  .icons figure{margin:0;text-align:center;font-size:.75rem;color:var(--muted)} .icons img{display:block;margin:0 auto .4rem;max-width:100%}
+  .mask{border-radius:50%;overflow:hidden}.round{border-radius:22%}
+  .share{display:flex;flex-direction:column;max-width:520px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel)}
+  .share img{display:block;width:100%;height:auto}.share div{padding:.7rem .9rem;border-top:1px solid var(--line)}
+  .share small{display:block;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .share strong{display:block}.share span{font-size:.9rem;color:var(--muted)}
+  /* option C (same CSS as head-snippet.html) */
+  .jv-brand{display:inline-flex;align-items:center;gap:.65rem;text-decoration:none}
+  .jv-brand__name{font-family:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:700;font-size:1.05rem;line-height:1;letter-spacing:.09em;white-space:nowrap}
+  .jv-brand__gold{color:#F0B429}.jv-brand__grey{color:#33383C}
+  @media (prefers-color-scheme:dark){.jv-brand__grey{color:#C9CFD5}}
+  :root[data-theme="dark"] .jv-brand__grey{color:#C9CFD5}
+  :root[data-theme="light"] .jv-brand__grey{color:#33383C}
+  ul.check{padding-left:1.1rem} code{font-size:.85em;background:var(--line);padding:.1em .35em;border-radius:5px}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <strong>Juveriya Interiors · brand kit test page</strong>
+  <div class="toggle" role="group" aria-label="Test theme">
+    <button data-t="light">Light</button><button data-t="dark">Dark</button><button data-t="system" class="on">System</button>
+  </div>
+</header>
+
+<main>
+  <h1>Test your kit</h1>
+  <p>Open this file in your browser. Use the <b>Light / Dark / System</b> buttons above to see how each logo behaves. Check the <b>browser tab</b> for the favicon.</p>
+
+  <h2>1 · Header options</h2>
+  <p class="note">These are the three options from <code>head-snippet.html</code>. A follows the buttons above; B and C follow your device's dark-mode setting, exactly as they will on your website.</p>
+
+  <div class="card"><h3>Option A · Full logo</h3>
+    <div class="mock center"><a href="#" aria-label="Juveriya Interiors"><img src="svg/logo-full.svg" data-light="svg/logo-full.svg" data-dark="svg/logo-full-dark.svg" alt="Juveriya Interiors" width="108" height="150"></a></div></div>
+
+  <div class="card"><h3>Option B · Full logo, switches to the dark logo in dark mode</h3>
+    <div class="mock center"><a href="#" aria-label="Juveriya Interiors"><picture>
+      <source srcset="svg/logo-full-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="svg/logo-full.svg" alt="Juveriya Interiors" width="108" height="150"></picture></a></div></div>
+
+  <div class="card"><h3>Option C · Compact header (icon + name as text)</h3>
+    <div class="mock"><a class="jv-brand" href="#" aria-label="Juveriya Interiors"><picture>
+      <source srcset="svg/logo-icon-dark.svg" media="(prefers-color-scheme: dark)">
+      <img src="svg/logo-icon.svg" alt="" width="44" height="44"></picture>
+      <span class="jv-brand__name"><span class="jv-brand__gold">JUVERIYA</span> <span class="jv-brand__grey">INTERIORS</span></span></a>
+      <nav><span>Projects</span><span>Services</span><span>Contact</span></nav></div></div>
+
+  <h2>2 · Every logo file</h2>
+  <div class="grid">
+    <div class="panel light"><small>Light background · svg/ files</small>
+      <img src="svg/logo-full.svg" alt="" height="190"><img src="svg/logo-icon.svg" alt="" height="90"><img src="svg/logo-wordmark.svg" alt="" width="300"></div>
+    <div class="panel dark"><small>Dark background · *-dark.svg files</small>
+      <img src="svg/logo-full-dark.svg" alt="" height="190"><img src="svg/logo-icon-dark.svg" alt="" height="90"><img src="svg/logo-wordmark-dark.svg" alt="" width="300"></div>
+  </div>
+
+  <h2>3 · “Auto” versions</h2>
+  <p class="note">One file that changes by itself. These follow your <b>device</b> light/dark setting (not the buttons above). Change your computer or phone to dark mode to see them switch.</p>
+  <div class="card"><div class="icons">
+    <figure><img src="svg/logo-full-auto.svg" alt="" height="150">logo-full-auto.svg</figure>
+    <figure><img src="svg/logo-icon-auto.svg" alt="" height="90">logo-icon-auto.svg</figure>
+    <figure><img src="svg/logo-wordmark-auto.svg" alt="" width="260">logo-wordmark-auto.svg</figure>
+  </div></div>
+
+  <h2>4 · Favicons and app icons</h2>
+  <p class="note">Your browser tab should show the icon right now. If it still shows an old or blank icon, do a hard refresh (Ctrl/Cmd + Shift + R) — browsers cache favicons aggressively.</p>
+  <div class="card"><div class="icons">
+    <figure><img src="favicons/favicon-16x16.png" alt="" width="16" height="16">16×16</figure>
+    <figure><img src="favicons/favicon-32x32.png" alt="" width="32" height="32">32×32</figure>
+    <figure><img src="favicons/favicon.svg" alt="" width="64" height="64">favicon.svg</figure>
+    <figure><img class="round" src="favicons/apple-touch-icon.png" alt="" width="90" height="90">iPhone / iPad</figure>
+    <figure><img src="favicons/android-chrome-192x192.png" alt="" width="96" height="96">Android 192</figure>
+    <figure><div class="mask" style="width:96px"><img src="favicons/maskable-icon-512x512.png" alt="" width="96" height="96" style="margin:0"></div><div style="margin-top:.4rem">Maskable (circle crop)</div></figure>
+  </div></div>
+
+  <h2>5 · Social share preview</h2>
+  <p class="note">Roughly how your link looks when shared on WhatsApp, Facebook or LinkedIn (real previews need your site online with the tags from <code>head-snippet.html</code>).</p>
+  <div class="share"><img src="social/og-image.png" alt="Social share image, 1200 by 630"><div><small>www.your-domain.com</small><strong>Juveriya Interiors</strong><span>Your short description appears here.</span></div></div>
+
+  <h2>6 · Checklist</h2>
+  <ul class="check">
+    <li>The browser tab shows the Juveriya icon.</li>
+    <li>In Dark mode, Option A still looks right (dark logo) and nothing disappears into the background.</li>
+    <li>On a dark-mode device, Options B and C and the “auto” logos switch to light-on-dark.</li>
+    <li>Logos look sharp when you zoom the page to 200%.</li>
+  </ul>
+</main>
+
+<script>
+  var root=document.documentElement;
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+  function swap(){document.querySelectorAll('img[data-light][data-dark]').forEach(function(i){i.src=isDark()?i.dataset.dark:i.dataset.light})}
+  document.querySelectorAll('.toggle button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.toggle button').forEach(function(x){x.classList.remove('on')});b.classList.add('on');
+    if(b.dataset.t==='system')root.removeAttribute('data-theme');else root.setAttribute('data-theme',b.dataset.t);swap()})});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',swap);swap();
+</script>
+</body>
+</html>

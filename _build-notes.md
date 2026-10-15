@@ -1,5 +1,188 @@
 # Juveriya Interior Decorator — Build Notes
 
+## Update Oct 2026 (round 10, UNPUSHED) — kit 2.0, hero rotator, portfolio refresh, before/after, contact updates
+
+1. **Brand kit 2.0** — client added `assets/juveriya-brand-kit2.0/` (redesigned
+   mark geometry, wider single-line wordmark, same palette family; every file
+   diffed vs old kit + live files, zero identical). Live `svg/` (icon×2,
+   wordmark×2 464×52, full-dark), `favicons/` (new names incl.
+   `android-chrome-192x192/512x512`, `maskable-icon-512x512`,
+   `favicon-16x16/32x32`; manifest points at the new names), and
+   `social/og-image.png` overwritten/replaced. HTML dims + favicon links
+   updated on all 5 pages; JS swap paths unchanged (same names).
+   **Deleted as superseded:** `assets/Juveriya_Interior_logo/` (whole dir),
+   old `svg/logo-mark(-dark).svg`, stale favicon PNGs, and unreferenced logo
+   drafts (`Draft_JI_logo.png`, `Juveriya_interiors_logo_draft.png`,
+   `download`, `draft3.png`). Kept: `Companies_Logo_PNG/` (partner-logo
+   source, still referenced by nothing in code but retained as client source).
+2. **Hero rotator (index)** — static `hero-warehouse-fitout.jpg` replaced by
+   15 real site photos crossfading every 2.6s (`hero-*.jpg`, 1920px,
+   ~200–420KB each, 67MB of sources → ~4MB): warehouse setups, partition
+   offices, racking, roof structure, lounge, gate, shutter frame, cabins.
+   First frame eager + `is-active` (no-JS = static frame); rest `data-src`
+   lazy-preloaded one ahead; pauses when tab hidden; fully static under
+   `prefers-reduced-motion`. Old hero file deleted.
+3. **Portfolio upgrades (generic titles only; client-named items untouched)** —
+   "Warehouse Fencing" → `pf-mesh-fencing.jpg` (Furlenco mesh corridor;
+   also used on the index featured card); "Turnkey Warehouse Office" →
+   `pf-blue-office.jpg` (Cabin blue office; also the index split image, whose
+   alt already described it); "Partitioned Cabins" → `pf-glass-cabin.jpg`
+   (glazed cabin). Titles/descs kept (photos illustrate work types).
+   Replaced files deleted (`warehouse-office-interior.jpg`;
+   `cold-cabin-cladding-work.jpg` and `office-glass-partitions.jpg` RETAINED —
+   still referenced by about.html and the Glazed Partitions item).
+4. **Before / After section (portfolio)** — deep-scanned ~826 Commercial
+   images (quant sharpness/size/orientation pass + visual verification of
+   date sequences): 2 verified same-project pairs (Karjat pool Feb22→Jun22;
+   MSC pool shell Mar23→finished deck Nov25) + a 3-stage EXPO office timeline
+   (in use Feb25 → stripped Mar25 → fitted out Apr25) with Before/During/
+   After tags, + a 4-thumb "More from the job files" strip — 11 frames total,
+   all from `website-portfolio` + same-project sequences (no same-room claims
+   beyond what dates + visuals support). Every frame is a button opening a
+   dedicated viewer (own overlay reusing lightbox styles, full-size photo,
+   stage title + caption, "Photo X of 11", prev/next/Escape/arrows/swipe,
+   focus return). Portfolio lightbox untouched (still counts exactly 21).
+   New `.ba-zoom`/`.ba-trio`/`.tag--during` CSS.
+5. **Contact updates** — G No 26 line removed everywhere (footers + contact
+   "Also at"); email is now **info@juveriya.com** everywhere incl. the form
+   recipient, native action, and meta description (⚠ enquiries now route to
+   the new address); Flaticon credit removed from all footers and the 4 chip
+   PNGs replaced by license-free inline SVGs (files deleted); new
+   "Google Business Profile" entries (contact card + all footers →
+   `https://share.google/2F6Hk8PfobSHnmGoR`); new "WhatsApp Business" card
+   with `[TODO: add WhatsApp Business link]` placeholder.
+   Verified 13/13 headless checks, 0 console/page/request errors;
+   screenshots inspected (hero + chips, before/after, contact cards,
+   portfolio grid, mobile). `/DATA` untouched (0 recent mods).
+
+## Update Oct 2026 (round 9, UNPUSHED) — brand kit v2 (new logo + palette)
+
+1. **New kit** — client added `assets/juveriya-website-brand-kit/` (new mark
+   geometry, single-line wordmark, new palette: graphite `#33383C`,
+   secondary graphite `#5B6166`, gold `#F0B429`, light neutral `#F5F5F5`,
+   dark-mode lights `#E7E9EB`/`#AEB4B9`, `theme-color #33383C`). Kit folder
+   kept as source, never edited. Genuinely new artwork everywhere (diffed
+   file-by-file against old kit + live files — zero identical).
+2. **Files** — runtime copies at site root overwritten/renamed to the new
+   kit's naming: `svg/` now holds `logo-icon(-dark).svg`, `logo-wordmark
+   (-dark).svg` (760×120), `logo-full-dark.svg` (760×525); old
+   `logo-mark(-dark).svg` deleted as superseded. `favicons/` fully replaced
+   (now `android-chrome-192/512.png`, manifest points at those +
+   `theme_color #33383C`/`background #F5F5F5`); stale `icon-192/512.png`,
+   `icon-maskable-512.png`, `favicon-48.png` deleted.
+   `social/og-image.png` overwritten (new dark version, still 1200×630).
+3. **Theme retokened** — `--brand-gold #F0B429`, `--brand-graphite #33383C`,
+   `--brand-graphite-light #5B6166`, `--brand-bg #F5F5F5`,
+   `--brand-graphite-on-dark #E7E9EB`,
+   `--brand-graphite-light-on-dark #AEB4B9`, `--graphite-600 #5B6166`;
+   `--brand-gold-text` token deleted (no deeper gold in v2). Primary-button
+   hover is now secondary-graphite bg + white text (6.2:1, verified). All
+   gold action roles follow the token automatically. `theme-color` meta →
+   `#33383C` on all 5 pages.
+4. **HTML/JS (5 pages)** — header mark → `logo-icon-dark.svg` (400×290),
+   wordmark dims → 760×120, preloads renamed, JS swap constants renamed.
+   Footer `logo-full-dark.svg` file replaced (same path). Fluid wordmark
+   height unchanged: 139px desktop, ~101px at 360px, 168px lockup fits.
+5. **Bigger header lockup** (client: logos looked too small on landing) —
+   mark 40→48px, wordmark `clamp(15px,4.5vw,22px)`→`clamp(16px,5vw,28px)`:
+   254px lockup on desktop (was 205px), 191px at 360px, both fit the 68px
+   header beside nav/CTA/hamburger with room to spare. Verified 1280/768/360,
+   0 errors, screenshots inspected.
+5. Verified: static audit clean (sole hit: pre-existing `#fff` shorthand),
+   8/9 headless checks (1 "failure" was a wrong test expectation — hover is
+   #5B6166 by design, 6.2:1), 0 console/page/request errors; screenshots
+   inspected (dark/solid header, CTA hover, mobile, footer). `/DATA`
+   untouched. Old kit folder retained untouched as source history.
+
+## Update Oct 2026 (round 8, UNPUSHED) — brand theme + header wordmark
+
+1. **Theme from `hex-codes.md`** (client design system — *supersedes* the
+   graphite-only rule). `:root` now carries the exact spec block
+   (`--brand-gold #F4B31F`, `--brand-gold-text #E3A51A`,
+   `--brand-graphite #5B6068`, `--brand-graphite-light #767B83`,
+   `--brand-bg #F4F4F4`, `--brand-graphite-on-dark #D9DCE1`,
+   `--brand-graphite-light-on-dark #A9AEB6`) plus kept neutrals
+   (`#000000` photo overlays/deepest stages, `#303030` dark stages/controls,
+   `#FFFFFF`). Remap: `--accent` → gold; `--bg-soft` → `#F4F4F4`;
+   `--muted` → brand graphite; `--line`/`--on-dark` → `#D9DCE1`;
+   `--graphite-600` corrected to spec `#5B6068`; `--graphite-200` token
+   deleted (all direct uses repointed, zero stale refs).
+2. **Gold action roles** (black text on gold ≈ 9:1): primary buttons
+   (incl. nav CTA) with deeper-gold hover; hero accent line; stat numbers;
+   service icon chips; project tags; step rails + number chips; active
+   portfolio filter; carousel arrow hovers; eyebrow bars; gold ambient
+   glows in page-hero + CTA banner. Kept dark: secondary buttons, footer,
+   hero overlay, stats/CTA surfaces, form focus borders, focus rings
+   (contrast-critical, functional). Red/green form states untouched.
+3. **Header wordmark** — kit `logo-wordmark(-dark).svg` (transparent, verified
+   on both backgrounds) added beside the mark at 22px; JS swaps mark AND
+   wordmark with the header state; both light assets preloaded; 113px total
+   lockup fits 360px beside the hamburger. Footer keeps the full-dark lockup.
+4. Verified: static audit clean (only бенign hits: `theme-color` meta hex,
+   `#000` shorthand on gold), 10/10 headless checks, 0 console/page/request
+   errors, screenshots inspected (dark/solid/mobile header, portfolio,
+   footer). `/DATA` untouched.
+
+## Update Oct 2026 (round 7, UNPUSHED) — client logo lockup in header + footer
+
+1. **Logo** — client-supplied `assets/Juveriya_Interior_logo/
+   juveriya_interiors_logo.svg` (isometric amber `#F4B31F` + grey `#5B6068`
+   mark, "JUVERIYA" amber + "INTERIORS" grey wordmark paths, baked `#F4F4F4`
+   background; file used byte-identical). Replaced the "J" tile + text
+   wordmark in all 10 brand slots (header + footer × 5 pages) with
+   `<img class="brand__logo">`; link `aria-label` kept, img `alt=""`
+   (labelled link pattern). Footer logo lazy-loads; header logo eager.
+2. **Badge treatment** — `.brand__logo` sits on an `#F4F4F4` badge (seamless
+   with the SVG's own background): header 48px tall, footer 64px tall.
+   Obsolete `.brand__mark/.brand__text/.brand__name/.brand__sub` rules (and
+   the `.is-solid` + `.footer-brand` overrides) removed — zero references
+   remain in HTML/CSS/JS. Amber/grey kept as-is under the client-brand
+   exemption (same precedent as partner logos); graphite palette otherwise
+   untouched. Favicon stays the graphite "J" (text lockup illegible at 16px).
+3. **PENDING — header legibility.** Full lockup at header size renders ~78px
+   wide; the mark reads but the wordmark text is unreadable. Client chose to
+   supply a mark-only/icon file for the header — full lockup stays in header
+   until those files arrive. Do NOT derive a cropped mark unilaterally.
+   Verified 12/12 headless checks, 0 console errors (1280 + 360, dark +
+   solid-white header, footer decode on all 5 pages, no overflow).
+
+## Update Oct 2026 (round 7b, UNPUSHED) — logo kit wired in (resolves #3 above)
+
+1. **Kit** — client added `assets/Juveriya_Interior_logo/juveriya-logo-kit/`
+   (SVG mark/full/wordmark in light/dark, PNGs, full favicon set + manifest,
+   OG image, README, head-snippet, test page) + the zip. Kit folder left
+   untouched as source. Runtime files copied to site root per the kit's own
+   "upload to root" instruction: `svg/` (mark, mark-dark, full-dark),
+   `favicons/` (10 files), `social/og-image.png` — 116 KB total.
+2. **Header** — mark only (the kit's own rule: full lockup illegible under
+   ~48px). `svg/logo-mark-dark.svg` by default (all heroes are dark);
+   `main.js` `onScroll()` swaps to `svg/logo-mark.svg` with the `.is-solid`
+   state, synced on init too. 40px tall, no badge. Light mark preloaded in
+   `<head>` so the first scroll doesn't flash. No-JS fallback is correct by
+   default (header stays transparent over the dark hero).
+3. **Footer** (dark) — `svg/logo-full-dark.svg`, no badge, 72px tall.
+4. **Head (all 5 pages)** — kit favicon block (SVG + ICO + 32px PNG +
+   apple-touch-icon + manifest + `theme-color #F4B31F`); every page's relative
+   `og:image` (which was broken for scrapers) replaced with absolute
+   `https://juveriya.in/social/og-image.png` + 1200×630 dimensions +
+   `twitter:card`. Per-page og:title/descriptions kept untouched.
+5. **Cleanup** — deleted orphan `assets/images/favicon.svg` (round-1 graphite
+   "J", superseded by the kit); the original `juveriya_interiors_logo.svg`
+   stays on disk unreferenced. Zero references to either remain in code.
+   Verified 6/6 headless checks, 0 console/page/request errors, screenshots
+   for dark header / solid header / footer / mobile all inspected.
+6. **New single-line wordmark** (client replaced the kit's stacked wordmark
+   artwork at 12:10 — only `logo-wordmark(-dark).svg` changed; mark, full
+   lockup, favicons untouched). Synced the site `svg/` copies; header img
+   dims updated to the true 441×38 intrinsic ratio; `.brand__wordmark`
+   height is now fluid `clamp(15px, 4.5vw, 22px)` so the 253px desktop
+   wordmark shrinks to 186px at 360px (236px total lockup, fits beside the
+   hamburger). Verified decode + dark/light swap + fit at 1280/768/360,
+   0 errors.
+7. **Working hours confirmed** (client) — contact info card now reads
+   "Mon – Sat: 9:00 AM – 7:00 PM / Sunday: By Appointment". Last `[TODO:]`
+   in the site resolved; zero TODOs remain.
+
 ## Update Oct 2026 (round 6) — Manrope typeface, hero + stats copy
 
 1. **Typography** — Archivo + Inter replaced by **Manrope** everywhere.
