@@ -1,5 +1,12 @@
 # Juveriya Interiors — Build Notes
 
+## Update Oct 2026 (round 15, UNPUSHED) — Residential section removed
+
+1. **Scope page is commercial-only** — the entire Residential section
+   (placeholder card + TODO) deleted from `scope.html`, plus all copy
+   mentions (hero text, title, meta/OG descriptions). Zero "residential"
+   references remain anywhere in site code. Commercial galleries untouched.
+
 ## Update Oct 2026 (round 14, UNPUSHED) — Scope page (Commercial + Residential)
 
 1. **New page `scope.html`** — "Scope of Work" with two sections. Built on the
@@ -17,8 +24,6 @@
 3. **Residential** (`#residential`, soft section) — placeholder only:
    "portfolio being compiled" + visible `[TODO: add residential project
    photos]` + contact link. No residential content invented (standing rule).
-   Verified: 18/18 decode, nav fits 6 items at 1280, no overflow at 360,
-   0 errors, full 19/19 regression suite green. Screenshots inspected.
 
 ## Update Oct 2026 (round 13, UNPUSHED) — people, names, privacy, MSC, before/after fixes
 
