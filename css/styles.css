@@ -342,7 +342,8 @@ li { margin-block: 0.3em; }
 .tag--during { background: #fff; color: var(--graphite-900); border: 2px solid var(--brand-gold); }
 .ba-card h3 { font-size: 1.02rem; margin-top: 0.8rem; }
 .ba-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
-.ba-strip .ba-zoom img { height: 150px; }
+.ba-strip .ba-zoom { aspect-ratio: 4 / 3; overflow: clip; }
+.ba-strip .ba-zoom img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .ba-strip .tag { font-size: 0.65rem; }
 @media (min-width: 720px) {
   .ba-strip { grid-template-columns: repeat(4, 1fr); }
@@ -353,8 +354,26 @@ li { margin-block: 0.3em; }
 .scope-fig img { width: 100%; height: 230px; object-fit: cover; display: block; }
 .scope-fig figcaption { padding: 0.8rem 1rem; font-size: 0.92rem; font-weight: 700; color: var(--graphite-900); }
 .scope-fig figcaption span { display: block; font-weight: 400; color: var(--muted); font-size: 0.85rem; }
+/* Site tabs + horizontal photo strips */
+.site-tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.2rem; }
+.site-panel { margin-top: 0.4rem; }
+.scope-strip { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.6rem; margin-top: 1.2rem; scrollbar-width: none; }
+.scope-strip::-webkit-scrollbar { display: none; }
+.scope-strip .scope-fig { flex: 0 0 min(300px, 78vw); scroll-snap-align: start; }
+.scope-fig .ba-zoom { width: 100%; }
+.scope-fig .ba-zoom img { width: 100%; height: 230px; object-fit: cover; display: block; }
+.strip-nav { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+.strip-nav button { width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--line); background: #fff; color: var(--graphite-900); font-size: 1.3rem; line-height: 1; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+.strip-nav button:hover { background: var(--brand-gold); border-color: var(--brand-gold); color: #000; }
+.strip-nav button:focus-visible { outline: 3px solid var(--black); outline-offset: 2px; }
 
 /* ============ Portfolio ============ */
+.pf-section { margin-top: 2.6rem; }
+.pf-section:first-of-type { margin-top: 1.6rem; }
+.pf-section.is-hidden { display: none; }
+.pf-section-title { display: flex; align-items: center; gap: 0.65rem; font-size: 1.3rem; margin-bottom: 1rem; }
+.pf-section-title::before { content: ""; width: 26px; height: 3px; flex: none; background: var(--brand-gold); border-radius: 2px; }
+.pf-section-title span { font-size: 0.78rem; font-weight: 700; color: #000; background: var(--brand-gold); border-radius: 999px; padding: 0.18rem 0.65rem; }
 .filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1.6rem 0 1.8rem; }
 .filter-btn {
   font-family: var(--font-head); font-weight: 700; font-size: 0.9rem;

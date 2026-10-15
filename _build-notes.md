@@ -1,5 +1,135 @@
 # Juveriya Interiors — Build Notes
 
+## Update Oct 2026 (round 24, UNPUSHED) — strip boxes made structural
+
+1. Strip thumbnails now size from `aspect-ratio: 4/3` on the button with the
+   image absolutely filling it — equal boxes are structural, independent of
+   file dimensions, load state, or cascade order. Measured 283×212 on all 6,
+   screenshot-confirmed. CSS version bumped to `?v=20261015d` on all pages so
+   the new rule cannot be shadowed by a cached stylesheet.
+
+## Update Oct 2026 (round 23, UNPUSHED) — asset versioning kills stale cache
+
+1. **Root cause of persistent "still the same" reports** — I kept overwriting
+   image files while keeping their URLs identical (1200×900 rebuilds, MSC
+   re-crops), so browsers kept serving the OLD pixels from cache. No CSS fix
+   can change that.
+2. **Fix: versioned all 265 local asset URLs** (`?v=20261015d` on every img
+   src/data-src, svg, favicon, preload, og-image across all 6 pages) —
+   caches treat them as new files and must re-fetch. Verified every
+   versioned URL resolves (265/265, zero 404s) and the full 21/21 suite
+   stays green. Bump the letter whenever assets change.
+
+## Update Oct 2026 (round 22, UNPUSHED) — strip uniformity + cache-busting
+
+1. **All 6 BA strip files rebuilt to exactly 1200×900** (attrs synced);
+   rendered boxes measured identical (283×150). Mixed source aspects can no
+   longer produce uneven strip heights.
+2. **Cache-busting query strings** — `css/styles.css?v=20261015c` and
+   `js/main.js?v=20261015c` on all 6 pages (bump the letter whenever CSS/JS
+   changes), so stale cached styles/scripts can never render again. Verified
+   the versioned URLs serve correctly.
+
+## Update Oct 2026 (round 21, UNPUSHED) — uniform scope image dimensions
+
+1. **All 96 `scope-*.jpg` files rebuilt to exactly 1200×900** (already-4:3
+   files downscaled; portrait/odd-ratio files center-cropped then scaled;
+   markup width/height attrs synced to 1200×900 for all 96). Rendered boxes
+   measured identical (298×230 across the strip) and screenshots confirm
+   aligned cards. Mixed source aspects can no longer produce uneven crops.
+
+## Update Oct 2026 (round 20, UNPUSHED) — scope image fill + section titles
+
+1. **Scope strip images hardened** — reported narrow/centred images could not
+   be reproduced (measured 298px full-bleed in headless Chrome); added
+   higher-specificity `.scope-fig .ba-zoom` rules so the fill cannot lose a
+   cascade battle, verified all 8 CEVA images at full card width. If the
+   reporter still sees narrow images it is a stale cached stylesheet — hard
+   refresh (Ctrl/Cmd+Shift+R) the Live Server tab.
+2. **Trade section titles redesigned** — gold eyebrow bar + gold count pill,
+   matching the site's eyebrow/tag language, replacing the plain "Name (n)"
+   text. Screenshots inspected.
+
+## Update Oct 2026 (round 19, UNPUSHED) — scoped photo viewer + location order
+
+1. **Scope images expand per project** — all 96 strip figures are now buttons
+   opening the viewer, which scopes prev/next to the clicked photo's own
+   project panel ("Photo X of 6", wraps inside the panel; verified 7×next
+   never leaves MSC). BA section keeps its global 14-frame scope. Viewer
+   overlay duplicated onto scope.html. Captions reuse the figure's own
+   alt/site text — no new copy.
+2. **Work locations in fixed order** — all "key locations" lists now read
+   Bhiwandi · Pune · Mumbai · Delhi NCR · Pan India (hero chip, index
+   og:desc + CTA section, services hero + service list, about facts).
+   Prose uses ("pan-India turnkey", "across India", per-city examples) and
+   project-specific lines ("Bhiwandi & Pan-India" card) intentionally
+   untouched.
+   Verified static + headless, 0 errors, screenshots inspected. `/DATA`
+   untouched.
+
+## Update Oct 2026 (round 18, UNPUSHED) — portfolio trade sections + scope strip fix
+
+1. **Portfolio: one flat grid → 7 trade sections** — Mezzanine (2),
+   Fabrication & Welding (5), Electrical & Networking (1), Fencing (2),
+   Interior Works (15), Waterproofing & Painting (2), Racking (1); each with
+   a counted h3. Same 28 items, same 3 filters; filter JS now also hides
+   sections with zero visible matches (verified: Waterproofing filter shows
+   only its section; All restores 28/7). Lightbox order follows section
+   order, counts unchanged. Unused `id="portfolio-grid"` dropped in the
+   split (nothing referenced it).
+2. **Scope strip UI fixed (my round-17 bug)** — the 15 appended panels had
+   landed OUTSIDE `.container` (full-bleed + native scrollbar). Moved all 17
+   panels inside (verified by parse); native strip scrollbars hidden
+   (`scrollbar-width:none` + webkit rule) since arrow buttons own scrolling.
+   Verified contained L/R, tabs/arrows work, screenshots inspected.
+   Full 21/21 suite green, 0 errors. `/DATA` untouched.
+
+## Update Oct 2026 (round 17, UNPUSHED) — portfolio trade coverage + all-project Scope tabs
+
+1. **Portfolio 21 → 28 items** (existing 3 filters unchanged; counts auto-sync:
+   warehouse 6→11, offices 13→15). New, from `DATA/specific job folders`
+   (today's mazzanine + racks photos): Mezzanine Staircase & Railings,
+   Epoxy-Coated Mezzanine Deck, On-Site Welding & Fabrication, Loading-Dock
+   Pit Civil Work, Storage Racking Installation (all Warehouse & Industrial);
+   plus Electrical Panels & Network Racks and Corporate Reception with
+   Signage (Offices & Interiors; reuse scope Dachser files — same facility /
+   generic titles). No new filter categories. Lightbox auto-counts 28.
+2. **Scope: 2 → 17 site tabs, 18 → 96 photos.** Every project folder in
+   `DATA/Commercial` is now a tab (Cabin, EXPO JNPT, Furlenco Bhiwandi,
+   Guwahati, B2X/Bhopal/Goa/Mahindra/Nasik FedEx, Pit, Jodhpur, Karjat, MSC,
+   Panchkula, Vijaywada) with 4–6 curated photos each (78 new files;
+   sharpness/size shortlist + visual review of every folder; dupes, videos,
+   toilets, children, blurry shots excluded; captions describe visible
+   content with folder-derived site labels — no invented scope details).
+   Skipped: googleads/meta (ad creatives), Business/business (mixed promo),
+   website-portfolio (lives in Before/After), Civil (elevator lobbies only).
+   Tab/strip JS is generic — no code changes needed.
+   Verified: static audit clean, 21/21 headless checks, all 96 scope images
+   decode, lightbox 28, filters correct, screenshots inspected (tabs, MSC
+   tab, new items, mobile). `/DATA` untouched.
+
+## Update Oct 2026 (round 16, UNPUSHED) — freshness pass: latest images throughout
+
+1. **Audit** — surveyed all pools by EXIF date (Commercial newest 2025-12,
+   DATA-images newest 2022-10, Project_Images undated): Commercial wins, so
+   all upgrades come from there. Rule enforced: client-named items keep
+   their own photos; generic-titled items take the newest fitting shot.
+2. **Hero (16 frames)** — dropped the two weakest (gate close-up, staff
+   photo); added Oct-2025 dock cabin (Cabin 135812, verified full-size) and
+   the Dachser office floor (verified; first tried the Dachser reception but
+   its half-visible wall signage clashed with the headline — rejected on the
+   screenshot). First frame still eager; counts unchanged.
+3. **Portfolio** — "Corporate Workstation Hall" → Oct-2025 Vijaywada white
+   room (verified full-size, matches its partition-bay desc); "PEB Shed
+   Frame" 581px → 1920px roof structure (title matches photo better than the
+   old erection shot). Kept deliberately: Dachser pedestals (desc-specific
+   match — the newer storage-wall shot would mismatch), cold-cabin (about
+   action shot), wood-frame glazing (matches its desc), terrace/facade/
+   panels/steel/Pune/FedEx/APM/cartridge (client-attributed or no better
+   alternative — the user's "old photos where required" exception).
+   Deleted the 4 replaced files.
+   Verified 19/19, 0 errors, screenshots inspected. `/DATA` untouched.
+
 ## Update Oct 2026 (round 15, UNPUSHED) — Residential section removed
 
 1. **Scope page is commercial-only** — the entire Residential section

@@ -168,6 +168,7 @@
   /* ---------- Portfolio filter ---------- */
   var filterBtns = document.querySelectorAll(".filter-btn");
   var items = document.querySelectorAll(".portfolio-item");
+  var sections = document.querySelectorAll(".pf-section");
   if (filterBtns.length && items.length) {
     filterBtns.forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -186,6 +187,10 @@
           } else {
             item.classList.add("is-hidden");
           }
+        });
+        sections.forEach(function (sec) {
+          var visible = sec.querySelectorAll('.portfolio-item:not(.is-hidden)').length;
+          sec.classList.toggle("is-hidden", visible === 0);
         });
       });
     });
@@ -262,32 +267,37 @@
     }, { passive: true });
   }
 
-  /* ---------- Before / After photo viewer ---------- */
+  /* ---------- Before / After + Scope photo viewer ----------
+     Clicking a photo opens it full-size; prev/next scroll through the
+     photos of that same group (project panel, pair/trio card or strip). */
   (function initBaViewer() {
-    var shots = Array.prototype.slice.call(document.querySelectorAll(".ba-zoom"));
+    var all = Array.prototype.slice.call(document.querySelectorAll(".ba-zoom"));
     var box = document.getElementById("ba-lightbox");
-    if (!box || !shots.length) return;
+    if (!box || !all.length) return;
     var img = document.getElementById("ba-lb-img");
     var title = document.getElementById("ba-lb-title");
     var desc = document.getElementById("ba-lb-desc");
     var count = document.getElementById("ba-lb-count");
-    var idx = 0, last = null;
+    var view = all, idx = 0, last = null;
     function show(i) {
-      idx = (i + shots.length) % shots.length;
-      var shot = shots[idx];
+      idx = (i + view.length) % view.length;
+      var shot = view[idx];
       var im = shot.querySelector("img");
       img.src = im.src;
       img.alt = im.alt;
       title.textContent = shot.getAttribute("data-ba-t") || "";
       desc.textContent = shot.getAttribute("data-ba-c") || "";
-      count.textContent = "Photo " + (idx + 1) + " of " + shots.length;
+      count.textContent = "Photo " + (idx + 1) + " of " + view.length;
     }
     function open(shot) {
+      var panel = shot.closest("[data-panel]");
+      view = panel ? Array.prototype.slice.call(panel.querySelectorAll(".ba-zoom"))
+                   : all.filter(function (b) { return !b.closest("[data-panel]"); });
       last = document.activeElement;
       box.classList.add("is-open");
       box.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-      show(shots.indexOf(shot));
+      show(view.indexOf(shot));
       box.querySelector(".lightbox__close").focus();
     }
     function close() {
@@ -297,7 +307,7 @@
       document.body.style.overflow = "";
       if (last && last.focus) last.focus();
     }
-    shots.forEach(function (shot) {
+    all.forEach(function (shot) {
       shot.addEventListener("click", function () { open(shot); });
     });
     box.querySelector(".lightbox__close").addEventListener("click", close);
@@ -320,6 +330,31 @@
       if (Math.abs(dx) > 45) show(idx + (dx < 0 ? 1 : -1));
       startX = null;
     }, { passive: true });
+  })();
+
+  /* ---------- Scope site tabs + photo strips ---------- */
+  (function initScopeTabs() {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-site]"));
+    if (!tabs.length) return;
+    var panels = Array.prototype.slice.call(document.querySelectorAll("[data-panel]"));
+    function select(btn) {
+      tabs.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+      panels.forEach(function (p) { p.hidden = p.getAttribute("data-panel") !== btn.getAttribute("data-site"); });
+    }
+    tabs.forEach(function (btn) {
+      btn.addEventListener("click", function () { select(btn); });
+    });
+    select(tabs[0]); // start on the first site; both panels stay visible without JS
+    document.querySelectorAll(".site-panel").forEach(function (panel) {
+      var strip = panel.querySelector(".scope-strip");
+      if (!strip) return;
+      panel.querySelectorAll("[data-strip-prev],[data-strip-next]").forEach(function (arrow) {
+        arrow.addEventListener("click", function () {
+          var dir = arrow.hasAttribute("data-strip-prev") ? -1 : 1;
+          strip.scrollBy({ left: dir * Math.max(strip.clientWidth * 0.8, 200), behavior: "smooth" });
+        });
+      });
+    });
   })();
 
   /* ---------- Contact form validation ---------- */
