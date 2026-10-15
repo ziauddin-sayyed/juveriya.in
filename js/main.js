@@ -1,4 +1,4 @@
-/* Juveriya Interior Decorator — main.js (vanilla JS, no dependencies) */
+/* Juveriya Interiors — main.js (vanilla JS, no dependencies) */
 (function () {
   "use strict";
 

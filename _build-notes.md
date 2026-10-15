@@ -1,4 +1,16 @@
-# Juveriya Interior Decorator — Build Notes
+# Juveriya Interiors — Build Notes
+
+## Update Oct 2026 (round 11, UNPUSHED) — renamed to Juveriya Interiors
+
+1. **"Interior Decorator" dropped everywhere** — 31 occurrences across all 5
+   pages + JS/CSS file headers now read "Juveriya Interiors" (titles, metas,
+   OG tags, aria-labels, body copy, map title, image alt, copyright —
+   restored the period: "© 2026 Juveriya Interiors. All rights reserved.").
+   Titles stay unique; grammar verified ("is/was established", "Contact …
+   in Santacruz"). Zero "Decorator" remains in site code. The two surviving
+   mentions in these notes are verbatim quotes of source documents (BOQ /
+   project-report legal name) and stay as evidence. The registered legal
+   name in /DATA records is unchanged — this rename is website branding only.
 
 ## Update Oct 2026 (round 10, UNPUSHED) — kit 2.0, hero rotator, portfolio refresh, before/after, contact updates
 
