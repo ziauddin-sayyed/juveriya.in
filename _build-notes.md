@@ -1,5 +1,24 @@
 # Juveriya Interiors — Build Notes
 
+## Update Oct 2026 (round 26) — portfolio CTA fix, contact email card, and scope gallery reordering
+
+1. **Portfolio CTA banner matched to homepage**:
+   - Fixed unclosed container `<div>` in `portfolio.html` that caused `.cta-banner` to break out and expand full-screen.
+   - Wrapped `.cta-banner` in its own `<section class="section" aria-labelledby="cta-heading"><div class="container">` matching `index.html`.
+   - Verified pixel-perfect identical dimensions (1180px on desktop) across all viewports.
+2. **Contact Email card restored**:
+   - Fixed missing `<li>` tag on Email contact item in `contact.html` so it properly inherits `.info-list li` card container styling matching adjacent cards.
+3. **Scope galleries visual reordering**:
+   - Reordered images within each of the 17 site/city panels in `scope.html` so finished, high-appeal hero shots appear first in both the scroll strip and lightbox sequence.
+
+## Update Oct 2026 (round 25) — portfolio CTA matches home
+
+1. Portfolio's old single-button CTA ("Want results like these…") replaced
+   with the homepage banner verbatim: "Have a warehouse, office or building
+   that needs work?" + floor-plan text + all three actions (Get a Free Quote
+   / Call 9923 365 642 / WhatsApp Enquiry). Screenshot-verified identical
+   layout (button wrap included).
+
 ## Update Oct 2026 (round 24, UNPUSHED) — strip boxes made structural
 
 1. Strip thumbnails now size from `aspect-ratio: 4/3` on the button with the
