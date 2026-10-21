@@ -398,7 +398,7 @@
       }
       /* No backend (static site): hand the enquiry to the visitor's mail app,
          pre-filled and URL-encoded. Fallbacks: copy button + direct links. */
-      var addr = "info@juveriya.com";
+      var addr = "info@juveriya.in";
       var typeEl = document.getElementById("type");
       var typeText = typeEl.options[typeEl.selectedIndex].text;
       var subject = "Website enquiry — " + typeText + " — " + name;

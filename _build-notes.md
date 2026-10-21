@@ -1,5 +1,10 @@
 # Juveriya Interiors — Build Notes
 
+## Update Oct 2026 (round 27) — contact email updated to info@juveriya.in
+
+1. **Email address updated site-wide**:
+   - Replaced all occurrences of `info@juveriya.com` with `info@juveriya.in` across all pages (JSON-LD schemas, footers, meta descriptions, contact form action, JS mailto link generator, and contact cards).
+
 ## Update Oct 2026 (round 26) — portfolio CTA fix, contact email card, and scope gallery reordering
 
 1. **Portfolio CTA banner matched to homepage**:
