@@ -60,19 +60,18 @@
 
 <div class="instructions">
   <strong style="font-size:14px;color:#1E2328;">Juveriya Interiors · Email Signature for Sufiyan Mukhtar Khan</strong><br>
-  <span>Designed exclusively for <b>White / Light Mode</b> using the official hosted PNG logo.</span>
+  <span>Designed exclusively for <b>White / Light Mode</b> with bulletproof styling for Gmail, Yahoo Mail, and Zoho Mail.</span>
   <br><br>
-  <b>How to add to Gmail / Outlook / Apple Mail:</b>
+  <b>How to add to Gmail / Yahoo Mail / Zoho Mail:</b>
   <ol style="margin: 6px 0 10px 20px; padding: 0;">
-    <li>Click the <b>Copy Signature</b> button below (or select everything inside the dashed box and press Ctrl+C / Cmd+C).</li>
-    <li>Open your email client's settings:
+    <li>Click the <b>Copy Signature</b> button below.</li>
+    <li>Go to your email settings:
       <ul style="margin: 4px 0; padding-left: 18px;">
-        <li><b>Gmail:</b> Settings (gear) → <i>See all settings</i> → <i>General</i> → <i>Signature</i> → <i>Create new</i> → Paste (Ctrl+V / Cmd+V).</li>
-        <li><b>Outlook:</b> File / Settings → <i>Mail</i> → <i>Signatures</i> → Paste.</li>
-        <li><b>Apple Mail:</b> Mail → <i>Settings</i> → <i>Signatures</i> → Add (+) → Paste.</li>
+        <li><b>Gmail:</b> Settings (gear) → <i>See all settings</i> → <i>General</i> → <i>Signature</i> → <i>Create new</i> → Paste (Ctrl+V) → Save.</li>
+        <li><b>Yahoo Mail:</b> Settings (gear) → <i>More Settings</i> → <i>Writing email</i> → Signature ON → Paste (Ctrl+V).</li>
+        <li><b>Zoho Mail:</b> Settings (gear) → <i>Signatures</i> → Add (+) → Paste (Ctrl+V) → Save.</li>
       </ul>
     </li>
-    <li>Click Save. Your signature is ready for every outgoing email!</li>
   </ol>
   <button class="btn-copy" id="copyBtn" onclick="copySignature()">📋 Copy Signature to Clipboard</button>
   <div class="copy-status" id="copyStatus">✓ Signature copied to clipboard! Paste it into your email settings.</div>
@@ -99,15 +98,15 @@
       
       <!-- Contact Details -->
       <div style="color:#33383C;font-size:13px;line-height:1.6;">
-        <span style="color:#5B6166;font-weight:bold;">T&nbsp;&nbsp;</span><a href="tel:+919923365642" style="color:#33383C;text-decoration:none;">+91 99233 65642</a>
+        <span style="color:#5B6166;font-weight:bold;">T&nbsp;&nbsp;</span><a href="tel:+919923365642" style="color:#33383C !important;text-decoration:none !important;"><span style="color:#33383C;text-decoration:none;">+91 99233 65642</span></a>
         <span style="color:#F0B429;">&nbsp;&bull;&nbsp;</span>
-        <a href="tel:+917385265642" style="color:#33383C;text-decoration:none;">+91 73852 65642</a>
+        <a href="tel:+917385265642" style="color:#33383C !important;text-decoration:none !important;"><span style="color:#33383C;text-decoration:none;">+91 73852 65642</span></a>
       </div>
       <div style="color:#33383C;font-size:13px;line-height:1.6;">
-        <span style="color:#5B6166;font-weight:bold;">E&nbsp;&nbsp;</span><a href="mailto:sufiyan.khan@juveriya.in" style="color:#33383C;text-decoration:none;">sufiyan.khan@juveriya.in</a>
+        <span style="color:#5B6166;font-weight:bold;">E&nbsp;&nbsp;</span><a href="mailto:sufiyan.khan@juveriya.in" style="color:#33383C !important;text-decoration:none !important;"><span style="color:#33383C;text-decoration:none;">sufiyan.khan@juveriya.in</span></a>
       </div>
       <div style="color:#33383C;font-size:13px;line-height:1.6;">
-        <span style="color:#5B6166;font-weight:bold;">W&nbsp;&nbsp;</span><a href="https://juveriya.in" target="_blank" rel="noopener" style="color:#33383C;text-decoration:none;">www.juveriya.in</a>
+        <span style="color:#5B6166;font-weight:bold;">W&nbsp;&nbsp;</span><a href="https://juveriya.in" target="_blank" rel="noopener" style="color:#33383C !important;text-decoration:none !important;"><span style="color:#33383C;text-decoration:none;">www.juveriya.in</span></a>
       </div>
       
       <!-- Address -->
@@ -117,9 +116,9 @@
       
       <!-- Social Media Links -->
       <div style="font-size:12px;padding-top:8px;">
-        <a href="https://www.instagram.com/juveriyainteriors" target="_blank" rel="noopener" style="color:#33383C;text-decoration:underline;font-weight:bold;">Instagram</a>
+        <a href="#" target="_blank" rel="noopener" style="color:#33383C !important;text-decoration:underline !important;font-weight:bold;"><span style="color:#33383C;text-decoration:underline;font-weight:bold;">Instagram</span></a>
         <span style="color:#F0B429;">&nbsp;&bull;&nbsp;</span>
-        <a href="https://www.linkedin.com/company/juveriyainteriors" target="_blank" rel="noopener" style="color:#33383C;text-decoration:underline;font-weight:bold;">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/sufiyan-khan-08a409444" target="_blank" rel="noopener" style="color:#33383C !important;text-decoration:underline !important;font-weight:bold;"><span style="color:#33383C;text-decoration:underline;font-weight:bold;">LinkedIn</span></a>
       </div>
     </td>
   </tr>
@@ -132,7 +131,6 @@ function copySignature() {
   const table = document.querySelector('.box-container table');
   if (!table) return;
 
-  // Select the table node completely (including <img> and inline styles)
   const range = document.createRange();
   range.selectNode(table);
   const selection = window.getSelection();
