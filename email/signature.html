@@ -129,12 +129,28 @@
 
 <script>
 function copySignature() {
-  const target = document.querySelector('.box-container table');
-  if (!target) return;
-  
-  if (navigator.clipboard && window.ClipboardItem) {
-    const htmlBlob = new Blob([target.outerHTML], { type: 'text/html' });
-    const textBlob = new Blob([target.innerText], { type: 'text/plain' });
+  const table = document.querySelector('.box-container table');
+  if (!table) return;
+
+  // Select the table node completely (including <img> and inline styles)
+  const range = document.createRange();
+  range.selectNode(table);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch (e) {
+    copied = false;
+  }
+
+  if (copied) {
+    showSuccess();
+  } else if (navigator.clipboard && window.ClipboardItem) {
+    const htmlBlob = new Blob([table.outerHTML], { type: 'text/html' });
+    const textBlob = new Blob([table.innerText], { type: 'text/plain' });
     navigator.clipboard.write([
       new ClipboardItem({
         'text/html': htmlBlob,
@@ -143,34 +159,20 @@ function copySignature() {
     ]).then(() => {
       showSuccess();
     }).catch(() => {
-      fallbackSelect();
+      alert('The signature is selected. Press Ctrl+C (or Cmd+C on Mac) to copy it!');
     });
   } else {
-    fallbackSelect();
-  }
-}
-
-function fallbackSelect() {
-  const target = document.querySelector('.box-container');
-  const range = document.createRange();
-  range.selectNodeContents(target);
-  const selection = window.getSelection();
-  selection.removeAllRanges();
-  selection.addRange(range);
-  try {
-    document.execCommand('copy');
     showSuccess();
-  } catch (e) {
-    alert('Please press Ctrl+C (Cmd+C on Mac) to copy the highlighted signature.');
   }
 }
 
 function showSuccess() {
   const status = document.getElementById('copyStatus');
   status.style.display = 'block';
+  status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   setTimeout(() => {
     status.style.display = 'none';
-  }, 4000);
+  }, 5000);
 }
 </script>
 
