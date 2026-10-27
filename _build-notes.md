@@ -227,7 +227,7 @@
 2. **Added for recrawl/discovery** — `Organization`/`GeneralContractor`
    JSON-LD on all 5 pages (name, logo `https://juveriya.in/svg/logo-full.svg`
    — copied the light full lockup to root `svg/` for this — image, phone,
-   email, Galaxy address, est. 1990, India, GBP sameAs); new `sitemap.xml`
+   email, Gala address, est. 1990, India, GBP sameAs); new `sitemap.xml`
    (5 URLs) + `robots.txt` (allow-all + sitemap ref). Favicon set already
    meets Google's size rules (48px ICO + PNGs + SVG + manifest, all
    crawlable). JSON-LD validates; pages serve 200 with 0 page errors (sole
@@ -534,11 +534,11 @@
    alongside the existing email/tel/WhatsApp fallbacks.
 4. **Office address + map** — client-provided office address added
    everywhere without removing the existing line: footers (all 5 pages) show
-   "**Office:** Galaxy no. 2, Santoshi Nagar, Western Express Hwy, Golibar,
+   "**Office:** Gala no. 2, Santoshi Nagar, Western Express Hwy, Golibar,
    Santacruz East, Mumbai – 400 055" above the G No 26 line; the contact
-   "Office address" block shows Galaxy No. 2 with "Also at: G No 26…".
-   **Map** — Google has no Places entry for "Galaxy no. 2" (a text query
-   falls back to a list of nearby *Galaxy*-named hotels with no marker,
+   "Office address" block shows Gala No. 2 with "Also at: G No 26…".
+   **Map** — Google has no Places entry for "Gala no. 2" (a text query
+   falls back to a list of nearby *Gala*-named hotels with no marker,
    which is what made the old embed look vague). Google's geocoder does snap
    the full address string to street level (17 z) at **19.0824306,
    72.8477001** — just east of NH-48 / W.E. Highway in Santoshi Nagar — so
