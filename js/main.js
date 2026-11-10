@@ -216,6 +216,11 @@
     currentIndex = (i + visibleItems.length) % visibleItems.length;
     var btn = visibleItems[currentIndex].querySelector("button");
     var img = btn.querySelector("img");
+    var fig = lbImg.closest(".lightbox__figure");
+    if (fig) fig.classList.remove("is-loaded");
+    lbImg.onload = function () {
+      if (fig) fig.classList.add("is-loaded");
+    };
     lbImg.src = img.src;
     lbImg.alt = img.alt;
     lbTitle.textContent = btn.getAttribute("data-title") || "";
@@ -283,6 +288,11 @@
       idx = (i + view.length) % view.length;
       var shot = view[idx];
       var im = shot.querySelector("img");
+      var fig = img.closest(".lightbox__figure");
+      if (fig) fig.classList.remove("is-loaded");
+      img.onload = function () {
+        if (fig) fig.classList.add("is-loaded");
+      };
       img.src = im.src;
       img.alt = im.alt;
       title.textContent = shot.getAttribute("data-ba-t") || "";
@@ -339,7 +349,13 @@
     var panels = Array.prototype.slice.call(document.querySelectorAll("[data-panel]"));
     function select(btn) {
       tabs.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
-      panels.forEach(function (p) { p.hidden = p.getAttribute("data-panel") !== btn.getAttribute("data-site"); });
+      panels.forEach(function (p) {
+        var match = p.getAttribute("data-panel") === btn.getAttribute("data-site");
+        p.hidden = !match;
+        if (match) {
+          p.querySelectorAll("img").forEach(checkImage);
+        }
+      });
     }
     tabs.forEach(function (btn) {
       btn.addEventListener("click", function () { select(btn); });
@@ -438,4 +454,41 @@
       });
     }
   }
+
+  /* ---------- Skeleton Loading Image State Tracker ---------- */
+  function onImgDone(img) {
+    img.classList.add("is-loaded");
+    var el = img;
+    while (el && el !== document.body) {
+      if (el.classList && (
+        el.classList.contains("ba-zoom") ||
+        el.classList.contains("scope-fig") ||
+        el.classList.contains("project-card") ||
+        el.classList.contains("item") ||
+        el.classList.contains("lightbox__figure")
+      )) {
+        el.classList.remove("is-loading");
+        el.classList.add("is-loaded");
+      }
+      el = el.parentElement;
+    }
+  }
+
+  function checkImage(img) {
+    if (img.complete && img.naturalWidth > 0) {
+      onImgDone(img);
+    } else {
+      img.addEventListener("load", function () {
+        onImgDone(img);
+      }, { once: true });
+      img.addEventListener("error", function () {
+        onImgDone(img);
+      }, { once: true });
+    }
+  }
+
+  var targets = document.querySelectorAll(
+    ".project-card img, .ba-zoom img, .scope-fig img, .clients-carousel .item img, .lightbox__figure img"
+  );
+  targets.forEach(checkImage);
 })();

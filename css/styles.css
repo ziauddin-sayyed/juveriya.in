@@ -512,3 +512,94 @@ li { margin-block: 0.3em; }
   .nav-scrim { display: none; }
   body.nav-open .nav-scrim { display: block; position: fixed; inset: var(--header-h) 0 0 0; background: rgba(0, 0, 0, 0.55); z-index: 90; }
 }
+
+/* ============ Skeleton Loading & Image Container Placeholders ============ */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Image container skeleton placeholders - ONLY while loading */
+.project-card:not(.is-loaded),
+.ba-zoom:not(.is-loaded),
+.lightbox__figure.is-loading {
+  position: relative;
+  background-color: #1f2326 !important;
+  background-image: linear-gradient(
+    90deg,
+    #1f2326 0%,
+    #2c3238 35%,
+    #3b434c 50%,
+    #2c3238 65%,
+    #1f2326 100%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: skeleton-shimmer 1.8s infinite linear !important;
+  overflow: clip;
+}
+
+/* Once the image is loaded, completely remove skeleton animations and backgrounds */
+.project-card.is-loaded,
+.ba-zoom.is-loaded,
+.lightbox__figure.is-loaded,
+.scope-fig.is-loaded {
+  animation: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* Scope figure cards: always pure white card with clean border and shadow */
+.scope-fig {
+  background: #ffffff !important;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: clip;
+  box-shadow: var(--shadow-sm);
+  animation: none !important;
+}
+
+.scope-fig figcaption {
+  background: #ffffff !important;
+}
+
+/* Client logo carousel: clean pure white card */
+.clients-carousel .item {
+  position: relative;
+  background: #ffffff !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  height: 96px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  animation: none !important;
+}
+
+.clients-carousel .item:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.clients-carousel .item img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .ba-zoom,
+  .lightbox__figure {
+    animation: none !important;
+  }
+}
+
